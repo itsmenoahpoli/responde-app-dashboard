@@ -16,7 +16,7 @@ export const SidebarNavigation = (props) => {
 
     return links.map((item) => (
       <>
-        <Button key={item.label} onClick={() => handleNavigate(item.url)}>
+        <Button key={item.url} onClick={() => handleNavigate(item.url)}>
           {item.icon} &nbsp; {item.label}
         </Button>
       </>

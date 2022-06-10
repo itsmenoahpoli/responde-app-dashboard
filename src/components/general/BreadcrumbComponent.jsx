@@ -23,8 +23,8 @@ export const BreadcrumbComponent = (props) => {
           <FiHome /> Home
         </Breadcrumb.Item>
 
-        {paths.splice(0, 1).map((path) => (
-          <Breadcrumb.Item key={path}>
+        {paths.splice(0, 1).map((path, idx) => (
+          <Breadcrumb.Item key={`${path}${idx}`}>
             {path.replaceAll("/", "")}
           </Breadcrumb.Item>
         ))}

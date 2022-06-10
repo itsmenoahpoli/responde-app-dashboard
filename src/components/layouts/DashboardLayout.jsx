@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { Container, Spinner } from "react-bootstrap";
@@ -22,28 +23,19 @@ const sidebarLinks = [
   },
   {
     label: "Emergency SOS Log",
-    url: "/sos-logs",
+    url: "/emergencies/logs",
     icon: <FiActivity />,
   },
   {
     label: "Emergency SMS Templates",
-    url: "/sos-logs",
+    url: "/emergencies/sms-templates",
     icon: <FiMessageSquare />,
-  },
-  {
-    label: "Emergency Hotlines",
-    url: "/sos-logs",
-    icon: <FiHash />,
-  },
-  {
-    label: "Settings",
-    url: "/settings",
-    icon: <FiSettings />,
   },
 ];
 
 export const DashboardLayout = (props) => {
   const { children, pageSEO } = props;
+  const navigate = useNavigate();
 
   const [pageLoading, setPageLoading] = React.useState(true);
 
@@ -55,16 +47,28 @@ export const DashboardLayout = (props) => {
     );
   };
 
+  const checkAuthToken = () => {
+    let token = localStorage.getItem("authToken");
+
+    if (token === null) {
+      navigate("/auth/login");
+    }
+  };
+
   React.useEffect(() => {
     setTimeout(() => {
       setPageLoading(false);
     }, 500);
   }, []);
 
+  React.useEffect(() => {
+    checkAuthToken();
+  }, []);
+
   return (
     <>
       <Helmet>
-        <title>Inventory Dashboard &mdash; {pageSEO.title}</title>
+        <title>GO RESPONDE &mdash; {pageSEO.title}</title>
       </Helmet>
 
       <Container fluid className="dashboard-layout-container">
