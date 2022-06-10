@@ -42,7 +42,7 @@ export const DashboardPage = () => {
             </Card>
           </Col>
 
-          <Col md={9}>
+          {/* <Col md={9}>
             <Card className="shadow-sm p-0">
               <Card.Header>Map Overview</Card.Header>
               <Card.Body className="p-0 m-0">
@@ -61,7 +61,7 @@ export const DashboardPage = () => {
                 ></iframe>
               </Card.Body>
             </Card>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </DashboardLayout>
