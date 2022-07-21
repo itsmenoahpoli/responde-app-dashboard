@@ -23,6 +23,18 @@ body {
 // CARD
 .card {
   border-color: #ccc;
+
+  .card-body {
+    .search-filter {
+      input {
+        font-size: 14px !important;
+      }
+
+      small {
+        font-size: 12px;
+      }
+    }
+  }
 }
 
 .card.no-padding {

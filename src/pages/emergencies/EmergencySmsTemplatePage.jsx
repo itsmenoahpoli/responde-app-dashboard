@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Card, Badge } from 'react-bootstrap';
+import { Container, Card, Badge, Button } from 'react-bootstrap';
 // import moment from 'moment';
 
 import { DashboardLayout } from 'components/layouts';
@@ -59,19 +59,32 @@ export const EmergencySmsTemplatePage = () => {
       <Container fluid>
         <Card className="border-0 shadow-sm col-md-12">
           <Card.Body className="p-3">
+            <div className="search-filter col-md-4 my-4">
+              <input className="form-control" placeholder="SEARCH" />
+              <small className="text-muted">*ONLY BY CODE</small>
+            </div>
+
             <div className="row">
               {rows.length &&
                 rows.map((row) => (
                   <div className="col-sm-12 col-md-6 pb-4" key={row.code}>
                     <Card className="border-0 shadow-sm sms-template-info">
                       <Card.Header>
-                        <small>{row.code}</small>
+                        <div className="d-flex justify-content-between align-items-baseline w-100">
+                          <small>{row.code}</small>
+
+                          <Button
+                            variant={row.emergency_type.is_enabled ? 'danger' : 'secondary'}
+                            size="sm"
+                            className="text-white text-uppercase px-1 py-0"
+                          >
+                            <small>{row.emergency_type.is_enabled ? 'Disable' : 'Enable'}</small>
+                          </Button>
+                        </div>
                       </Card.Header>
                       <Card.Body>
                         <div className="mb-2">
-                          <small>
-                            <u>Emergency Type Details</u>
-                          </small>
+                          <small className="text-muted text-uppercase">Template Information</small>
 
                           <div className="px-2 mt-2">
                             <div className="row rounded border p-2">
