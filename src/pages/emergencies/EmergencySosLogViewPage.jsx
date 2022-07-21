@@ -1,13 +1,13 @@
-import React from "react";
-import { Card, Container, Spinner } from "react-bootstrap";
+import React from 'react';
+import { Card, Container, Spinner } from 'react-bootstrap';
 
-import { DashboardLayout } from "components/layouts";
-import EmergencySosService from "lib/services/emergency-sos.service";
+import { DashboardLayout } from 'components/layouts';
+import EmergencySosService from 'lib/services/emergency-sos.service';
 
 const _emergencySosService = new EmergencySosService();
 
 const pageSEO = {
-  title: "Page Title",
+  title: 'Emergency SOS Details',
 };
 
 export const EmergencySosLogViewPage = () => {
@@ -20,7 +20,7 @@ export const EmergencySosLogViewPage = () => {
         setReport(response.data);
       })
       .catch((err) => {
-        console.log(err);
+        alert('SERVER ERROR: Failed to load data. Please contact IT system administrator');
       });
   };
 
@@ -34,9 +34,7 @@ export const EmergencySosLogViewPage = () => {
       <Container fluid>
         <Card className="shadow-sm border-0">
           <Card.Body>
-            {Boolean(report === null) && (
-              <Spinner animation="border" size="lg" />
-            )}
+            {Boolean(report === null) && <Spinner animation="border" size="lg" />}
           </Card.Body>
         </Card>
       </Container>

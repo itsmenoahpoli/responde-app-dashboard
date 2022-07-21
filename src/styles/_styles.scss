@@ -33,6 +33,18 @@ body {
   }
 }
 
+.card.sms-template-info {
+  .card-body {
+    small {
+      font-size: 13px;
+    }
+
+    .row {
+      background: #eee;
+    }
+  }
+}
+
 // FORM
 form {
   .form-check {

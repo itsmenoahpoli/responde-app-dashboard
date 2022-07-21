@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
-import { Container, Button } from "react-bootstrap";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import { Container, Button } from 'react-bootstrap';
 
 export const SidebarNavigation = (props) => {
   const { sidebarLinks } = props;
@@ -15,11 +15,9 @@ export const SidebarNavigation = (props) => {
     };
 
     return links.map((item) => (
-      <>
-        <Button key={item.url} onClick={() => handleNavigate(item.url)}>
-          {item.icon} &nbsp; {item.label}
-        </Button>
-      </>
+      <Button key={`sidebar-nav-` + item.label} onClick={() => handleNavigate(item.url)}>
+        {item.icon} &nbsp; {item.label}
+      </Button>
     ));
   };
 

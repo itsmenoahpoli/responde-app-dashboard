@@ -1,23 +1,15 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  Container,
-  Card,
-  Image,
-  Form,
-  Button,
-  Alert,
-  Spinner,
-} from "react-bootstrap";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Container, Card, Image, Form, Button, Alert, Spinner } from 'react-bootstrap';
 
-import brandLogo from "assets/images/brand-logo.jpg";
-import { AuthLayout } from "components/layouts";
-import AuthService from "lib/services/auth.service";
+import brandLogo from 'assets/images/brand-logo.jpg';
+import { AuthLayout } from 'components/layouts';
+import AuthService from 'lib/services/auth.service';
 
 const _authService = new AuthService();
 
 const pageSEO = {
-  title: "Log In",
+  title: 'Log In',
 };
 
 export const LoginPage = () => {
@@ -34,10 +26,10 @@ export const LoginPage = () => {
     await _authService
       .userLogin(credentials)
       .then((response) => {
-        localStorage.setItem("authToken", response.data.authToken);
-        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem('authToken', response.data.authToken);
+        localStorage.setItem('user', JSON.stringify(response.data.user));
 
-        navigate("/dashboard");
+        navigate('/dashboard');
       })
       .catch((err) => {
         setError(true);
@@ -50,16 +42,17 @@ export const LoginPage = () => {
       <Container fluid className="form-container">
         <Card className="col-xs-12 col-md-3 border-0 shadow-sm">
           <Card.Body>
-            {Boolean(error) && (
-              <Alert variant="warning">
-                Invalid credentials provided, please try again
-              </Alert>
-            )}
             <Container fluid className="col-md-12 mx-auto bg-dark p-5 mb-3">
               <div className="text-center">
                 <Image src={brandLogo} alt="Burauen-brand-logo" fluid />
               </div>
             </Container>
+
+            {Boolean(error) && (
+              <Alert variant="warning">
+                <small>Invalid credentials provided, please try again</small>
+              </Alert>
+            )}
             <Form onSubmit={handleLogin}>
               <Form.Group className="form-group">
                 <Form.Label>E-mail</Form.Label>
@@ -96,13 +89,8 @@ export const LoginPage = () => {
                 </a>
               </Container>
 
-              <Button
-                type="submit"
-                variant="primary"
-                className="w-100 mt-2"
-                disabled={loading}
-              >
-                {loading ? <Spinner animation="border" /> : "Log In"}
+              <Button type="submit" variant="primary" className="w-100 mt-2" disabled={loading}>
+                {loading ? <Spinner animation="border" /> : 'Log In'}
               </Button>
             </Form>
           </Card.Body>

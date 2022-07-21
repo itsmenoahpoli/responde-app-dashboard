@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Container } from "react-bootstrap";
-import { NavbarNavigation } from "components/layouts/navigations";
-import { BreadcrumbComponent } from "components/general";
-import moment from "moment";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Container } from 'react-bootstrap';
+import { NavbarNavigation } from 'components/layouts/navigations';
+import { BreadcrumbComponent } from 'components/general';
+import moment from 'moment';
 
 export const DashboardContent = (props) => {
   const { children } = props;
@@ -11,7 +11,7 @@ export const DashboardContent = (props) => {
   const CurrentDatetime = () => {
     return (
       <small className="datetime-label">
-        Today is &mdash; UTC +8 {moment().format("MMMM DD, YYYY h:mm A")}
+        Today is &mdash; UTC +8 {moment().format('MMMM DD, YYYY h:mm A')}
       </small>
     );
   };
@@ -34,5 +34,5 @@ export const DashboardContent = (props) => {
 };
 
 DashboardContent.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.array.isRequired,
 };

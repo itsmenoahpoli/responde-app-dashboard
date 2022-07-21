@@ -1,50 +1,49 @@
-import React from "react";
-import { Container, Card, Button } from "react-bootstrap";
-import DataTable from "react-data-table-component";
-import moment from "moment";
+import React from 'react';
+import { Container, Card, Button } from 'react-bootstrap';
+import DataTable from 'react-data-table-component';
+import moment from 'moment';
 
-import { DashboardLayout } from "components/layouts";
-import EmergencySosService from "lib/services/emergency-sos.service";
+import { DashboardLayout } from 'components/layouts';
+import EmergencySosService from 'lib/services/emergency-sos.service';
 
 const _emergencySosService = new EmergencySosService();
 
 const pageSEO = {
-  title: "Page Title",
+  title: 'Emergency SOS Logs',
 };
 
 const headers = [
   {
-    name: "USER",
+    name: 'USER',
     selector: (row) => row.user,
-    format: (row) =>
-      `${row.user.first_name} ${row.user.middle_name} ${row.user.last_name}`,
+    format: (row) => `${row.user.first_name} ${row.user.middle_name} ${row.user.last_name}`,
   },
   {
-    name: "CONTACT NO.",
+    name: 'CONTACT NO.',
     selector: (row) => row.user.contact_number,
   },
   {
-    name: "EMERGENCY TYPE",
+    name: 'EMERGENCY TYPE',
     grow: 2,
     selector: (row) => row.emergency_type.name,
   },
   {
-    name: "STATUS",
+    name: 'STATUS',
     selector: (row) => row.status,
   },
   {
-    name: "RAW LOCATION",
+    name: 'RAW LOCATION',
     grow: 5,
     selector: (row) => row.location,
   },
   {
-    name: "DATETIME REPORTED",
+    name: 'DATETIME REPORTED',
     grow: 2,
     selector: (row) => row.created_at,
-    format: (row) => moment(row.created_at).format("MMMM d, YYYY h:m A"),
+    format: (row) => moment(row.created_at).format('MMMM d, YYYY h:m A'),
   },
   {
-    name: "ACTION",
+    name: 'ACTION',
     selector: (row) => row.id,
     cell: (row) => (
       <Button variant="primary" className="py-2" size="sm">
@@ -64,7 +63,7 @@ export const EmergencySosLogPage = () => {
         setReports(response.data);
       })
       .catch((err) => {
-        console.log(err);
+        alert('SERVER ERROR: Failed to load data. Please contact IT system administrator');
       });
   };
 
